@@ -123,9 +123,24 @@ def write_data_dict_to_ini(data_dict, section, out_parser, user_format):
             else:
                 out_parser[key] = value
 
+#--------------------------------------------------------------------------------------------------------------------------------
+def write_ordered_data_dict_to_ini(data_dict, section, out_parser, user_format):
 
-            out_parser[key] = value
+    for key in data_dict.keys():
 
+        value = data_dict[key]
+
+        if isinstance(value, OrderedDict):
+
+            out_parser[key] = OrderedDict()
+
+            write_ordered_data_dict_to_ini(value, key, out_parser[key], user_format)
+
+        else:
+            if user_format:
+                out_parser[key] = to_user_format(value)
+            else:
+                out_parser[key] = value
 
 #--------------------------------------------------------------------------------------------------------------------------------
 def is_basetype(obj):
