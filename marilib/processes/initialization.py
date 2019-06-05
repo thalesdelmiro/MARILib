@@ -189,7 +189,6 @@ def efficiency_prop():
     efficiency_prop_i = 0.82     # efficiency of a fan to convert shaft power into propulsive power
     return efficiency_prop_i
 
-	
 #===========================================================================================================
 def propeller_efficiency():
     propeller_efficiency_i = 0.85     # efficiency of a propeller to convert shaft power into propulsive power
@@ -242,7 +241,6 @@ def core_weight_ratio():
     core_weight_ratio_i = 0.13    # Mean contribution of the core to the total engine weight
     return core_weight_ratio_i
 
-	
 #===========================================================================================================
 def prop_architecture():
     prop_architecture_i = 1    # prop_architecture, 1: turbofan, 2: partial turbo electric
@@ -457,7 +455,6 @@ def req_vz_cruise():
     req_vz_cruise_i = unit.mps_ftpmin(0)
     return req_vz_cruise_i
 
-	
 #===========================================================================================================
 def cost_mission_disa():
     cost_mission_disa_i = 0
