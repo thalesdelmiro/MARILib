@@ -313,18 +313,18 @@ def eval_wing_design(aircraft):
     wing.y_tip = 0.5*wing.span
 
     if(15<unit.deg_rad(wing.sweep)):  # With kink
-      Phi100intTE = max( 0 , 2*(wing.sweep-unit.rad_deg(32)) )
-      tan_phi100 = numpy.tan(Phi100intTE)
-      A = ((1-0.25*wing.taper_ratio)*wing.y_kink+0.25*wing.taper_ratio*wing.y_root-wing.y_tip) / (0.75*wing.y_kink+0.25*wing.y_root-wing.y_tip)
-      B = (numpy.tan(wing.sweep)-tan_phi100) * ((wing.y_tip-wing.y_kink)*(wing.y_kink-wing.y_root)) / (0.25*wing.y_root+0.75*wing.y_kink-wing.y_tip)
-      wing.c_root = (wing.area-B*(wing.y_tip-wing.y_root)) / (wing.y_root+wing.y_kink+A*(wing.y_tip-wing.y_root)+wing.taper_ratio*(wing.y_tip-wing.y_kink))
-      wing.c_kink = A*wing.c_root + B
-      wing.c_tip = wing.taper_ratio*wing.c_root
+        Phi100intTE = max( 0 , 2*(wing.sweep-unit.rad_deg(32)) )
+        tan_phi100 = numpy.tan(Phi100intTE)
+        A = ((1-0.25*wing.taper_ratio)*wing.y_kink+0.25*wing.taper_ratio*wing.y_root-wing.y_tip) / (0.75*wing.y_kink+0.25*wing.y_root-wing.y_tip)
+        B = (numpy.tan(wing.sweep)-tan_phi100) * ((wing.y_tip-wing.y_kink)*(wing.y_kink-wing.y_root)) / (0.25*wing.y_root+0.75*wing.y_kink-wing.y_tip)
+        wing.c_root = (wing.area-B*(wing.y_tip-wing.y_root)) / (wing.y_root+wing.y_kink+A*(wing.y_tip-wing.y_root)+wing.taper_ratio*(wing.y_tip-wing.y_kink))
+        wing.c_kink = A*wing.c_root + B
+        wing.c_tip = wing.taper_ratio*wing.c_root
 
     else:		# Without kink
-      wing.c_root = 2*wing.area / (2*wing.y_root*(1-wing.taper_ratio) + (1+wing.taper_ratio)*numpy.sqrt(wing.aspect_ratio*wing.area))
-      wing.c_tip = wing.taper_ratio*wing.c_root
-      wing.c_kink = ((wing.y_tip-wing.y_kink)*wing.c_root + (wing.y_kink-wing.y_root)*wing.c_tip) / (wing.y_tip-wing.y_root)
+        wing.c_root = 2*wing.area / (2*wing.y_root*(1-wing.taper_ratio) + (1+wing.taper_ratio)*numpy.sqrt(wing.aspect_ratio*wing.area))
+        wing.c_tip = wing.taper_ratio*wing.c_root
+        wing.c_kink = ((wing.y_tip-wing.y_kink)*wing.c_root + (wing.y_kink-wing.y_root)*wing.c_tip) / (wing.y_tip-wing.y_root)
 
 
     tan_phi0 = 0.25*(wing.c_kink-wing.c_tip)/(wing.y_tip-wing.y_kink) + numpy.tan(wing.sweep)
