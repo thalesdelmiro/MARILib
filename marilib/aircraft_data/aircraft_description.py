@@ -6,6 +6,8 @@ Created on Thu Jan 24 23:22:21 2019
 @author: DRUOT Thierry, GALLARD Francois, DELMIRO Thales
 """
 
+from collections import OrderedDict
+
 from marilib.aircraft_data.operational_performances \
     import DesignDriver, LowSpeed, HighSpeed, MaxPayloadMission, \
            NominalMission, MaxFuelMission, ZeroPayloadMission, \
