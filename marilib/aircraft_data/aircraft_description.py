@@ -73,17 +73,29 @@ class Aircraft(object):
         self.battery = Battery()
 
 
-    def export_to_ini_file(self, out_file_path="Aircraft.ini"):
+    def export_to_ini_file(self, out_file_path = "Aircraft.ini", def_order = True,\
+                           user_format = True):
+        """
+        Build  ini file :
+            Data tree file
+            :param out_file_path: File path - default value "Aircraft.ini"
+            :param def_order: parameters' order - default value True for class definition order
+                                                  alternative value False for alphabetical order
+        """
 
         from configobj import ConfigObj
         out_parser = ConfigObj(indent_type="    ")
         out_parser.filename = out_file_path
 
-        data_dict = self.get_data_dict()
-        write_data_dict_to_ini(data_dict, 'Aircraft', out_parser)
-
+        if def_order: # class definition order
+            data_dict = self.get_ordered_data_dict()
+            write_ordered_data_dict_to_ini(data_dict, 'Aircraft', out_parser, user_format)
+        else: # alphabetical order
+            data_dict = self.get_data_dict()
+            write_data_dict_to_ini(data_dict, 'Aircraft', out_parser, user_format)
+            
         out_parser.write()
-
+        
 
     def get_data_dict(self):
 
