@@ -76,8 +76,8 @@ def lin_interp_1d(x,X,Y):
     n = numpy.size(X)
     for j in range(1,n):
         if x<X[j] :
-           y=Y[j-1]+(Y[j]-Y[j-1])*(x-X[j-1])/(X[j]-X[j-1])
-           return y
+            y=Y[j-1]+(Y[j]-Y[j-1])*(x-X[j-1])/(X[j]-X[j-1])
+            return y
     y = Y[n-2]+(Y[n-1]-Y[n-2])*(x-X[n-2])/(X[n-1]-X[n-2])
     return y
 
@@ -102,8 +102,8 @@ def maximize_1d(xini,dx,fct):
             arg = []
             p = fct[0][1]
             if p==1:
-               arg.append(x)
-               for i in range (2,n):
+                arg.append(x)
+                for i in range (2,n):
                     arg.append(fct[0][i])
             else:
                 for i in range (2,p+1):
@@ -175,8 +175,8 @@ def maximize_1d_v2(xini,dx,fct):
             arg = []
             p = fct[0][1]
             if p==1:
-               arg.append(x)
-               for i in range (2,n):
+                arg.append(x)
+                for i in range (2,n):
                     arg.append(fct[0][i])
             else:
                 for i in range (2,p+1):
