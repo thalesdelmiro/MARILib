@@ -172,7 +172,6 @@ def is_basetype(obj):
 
     return False
 
-
 #--------------------------------------------------------------------------------------------------------------------------------
 def get_data_dict(obj, obj_name, data_dict):
 
@@ -231,3 +230,10 @@ def get_ordered_data_dict(obj, obj_name, ord_dict):
                     i = eol + 1                    
     return ord_dict
 
+#===============================================================================
+# main
+#===============================================================================
+if __name__ == "__main__":
+    ac = Aircraft()
+    ordered_dict = get_ordered_data_dict(ac, "Aircraft", OrderedDict())
+    print ordered_dict
