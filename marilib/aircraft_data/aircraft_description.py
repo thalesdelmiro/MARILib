@@ -26,6 +26,8 @@ from marilib.airplane.propulsion.turbofan.turbofan_data \
 from marilib.airplane.propulsion.hybrid_pte1.hybrid_pte1_data \
     import PowerElectricChain, Battery, ElectricNacelle, ElectricEngine
 
+from marilib.tools.math import to_user_format
+
 #--------------------------------------------------------------------------------------------------------------------------------
 class Aircraft(object):
     """
@@ -141,28 +143,7 @@ def write_ordered_data_dict_to_ini(data_dict, section, out_parser, user_format):
                 out_parser[key] = to_user_format(value)
             else:
                 out_parser[key] = value
-
-#--------------------------------------------------------------------------------------------------------------------------------
-def to_user_format(value):
-    from numpy import max, ceil, log10, floor, float64, arange
-    if isinstance(value, tuple):
-        lst = list(value)
-        for i in arange(len(lst)):
-            lst[i] = to_user_format(lst[i])
-        return lst
-    if isinstance(value, (float, float64)):
-        if value == 0. or value == -0.:
-            return format(value, "".join((".4f")))
-        else:
-            V = abs(value)
-            if abs(value) > 1:
-                nb_dec = int(max((0,5-ceil(log10(V+1e-4)))))
-            else:
-                nb_dec = int(3 - floor(log10(V)))
-            return format(value, "".join((".",str(nb_dec),"f")))
-    else:
-        return value
-    
+   
 #--------------------------------------------------------------------------------------------------------------------------------
 def is_basetype(obj):
 
