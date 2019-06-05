@@ -43,7 +43,7 @@ def turbofan_thrust(aircraft,Pamb,Tamb,Mach,rating,nei):
 
     (rho,sig) = earth.air_density(Pamb,Tamb)
 
-    fn0 = factor[rating]*kth*engine.reference_thrust*sig**0.75
+    fn0 = factor[int(rating)]*kth*engine.reference_thrust*sig**0.75
 
     fn_core = fn0 * engine.core_thrust_ratio        # Core thrust
 
