@@ -38,8 +38,8 @@ def trinome(A,Y):
     calculates trinome coefficients from 3 given points
     A = [X2, X, 1]
     """
-    X = numpy.array([0.,0.,0.])
-    X2 = numpy.array([0.,0.,0.])
+    X = array([0.,0.,0.])
+    X2 = array([0.,0.,0.])
 
     for i in range(0,3):
         X[i] = A[i][1]
@@ -73,7 +73,7 @@ def lin_interp_1d(x,X,Y):
         Y y position array of the knowing points
     """
 
-    n = numpy.size(X)
+    n = size(X)
     for j in range(1,n):
         if x<X[j] :
             y=Y[j-1]+(Y[j]-Y[j-1])*(x-X[j-1])/(X[j]-X[j-1])
@@ -118,8 +118,8 @@ def maximize_1d(xini,dx,fct):
             return y
     #-----------------------------------------------------------------------------------------------------------
 
-    X = numpy.zeros(3)
-    Y = numpy.zeros(3)
+    X = zeros(3)
+    Y = zeros(3)
 
     X[0] = xini
     Y[0] = fct_max_1d(X[0],fct)
@@ -142,9 +142,9 @@ def maximize_1d(xini,dx,fct):
         Y[1] = Y[2]
         Y[2] = fct_max_1d(X[2],fct)
 
-    A=numpy.vander(X,3)     #[X**2,X,numpy.ones(3)]
+    A=vander(X,3)     #[X**2,X,numpy.ones(3)]
 
-    C = numpy.zeros((3))
+    C = zeros((3))
     C = trinome(A,Y)
 
     xres = -C[1]/(2*C[0])
@@ -191,8 +191,8 @@ def maximize_1d_v2(xini,dx,fct):
             return y
     #-----------------------------------------------------------------------------------------------------------
 
-    X = numpy.zeros(3)
-    Y = numpy.zeros(3)
+    X = zeros(3)
+    Y = zeros(3)
 
     X[0] = xini
     Y[0] = fct_max_1d(X[0],fct)
@@ -215,9 +215,9 @@ def maximize_1d_v2(xini,dx,fct):
         Y[1] = Y[2]
         Y[2] = fct_max_1d(X[2],fct)
 
-    A=numpy.vander(X,3)     #[X**2,X,numpy.ones(3)]
+    A=vander(X,3)     #[X**2,X,numpy.ones(3)]
 
-    C = numpy.zeros((3))
+    C = zeros((3))
     C = trinome(A,Y)
 
     xres = -C[1]/(2*C[0])
