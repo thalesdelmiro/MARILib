@@ -104,7 +104,7 @@ class Aircraft(object):
         return get_ordered_data_dict(self, "Aircraft", OrderedDict())
 
 #--------------------------------------------------------------------------------------------------------------------------------
-def write_data_dict_to_ini(data_dict, section, out_parser):
+def write_data_dict_to_ini(data_dict, section, out_parser, user_format):
 
     for key in sorted(data_dict.keys()):
 
@@ -114,9 +114,15 @@ def write_data_dict_to_ini(data_dict, section, out_parser):
 
             out_parser[key] = {}
 
-            write_data_dict_to_ini(value, key, out_parser[key])
+            write_data_dict_to_ini(value, key, out_parser[key], user_format)
 
         else:
+            
+            if user_format:
+                out_parser[key] = to_user_format(value)
+            else:
+                out_parser[key] = value
+
 
             out_parser[key] = value
 
