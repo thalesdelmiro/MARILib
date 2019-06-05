@@ -3,7 +3,7 @@
 """
 Created on Thu Jan 24 23:22:21 2019
 
-@author: DRUOT Thierry
+@author: DRUOT Thierry, GALLARD Francois, DELMIRO Thales
 """
 
 from marilib.aircraft_data.operational_performances \
