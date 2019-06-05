@@ -9,7 +9,8 @@ Changed name from "design.py" to "assembly.py" on 21:05:2019
 """
 
 import numpy as np
-from scipy.optimize import fsolve,minimize,SR1, NonlinearConstraint,BFGS
+# from scipy.optimize import fsolve,minimize,SR1, NonlinearConstraint,BFGS
+from scipy.optimize import fsolve, minimize
 from marilib.tools import units as unit
 
 from marilib.earth import environment as earth
@@ -786,11 +787,11 @@ def mdf_process(aircraft,search_domain,criterion):
 
     crit_ref,cst_ref = eval_optim_data(start_value,aircraft,crit_index,1.)
 
-    res = minimize(eval_optim_crt, start_value, args=(aircraft,crit_index,crit_ref,), method="trust-constr",
-                   jac="3-point", hess=SR1(), hessp=None, bounds=search_domain, tol=1e-5,
-                   constraints=NonlinearConstraint(fun=lambda x:eval_optim_cst(x,aircraft,crit_index,crit_ref),
-                                                   lb=0., ub=np.inf, jac='3-point'),
-                   options={'maxiter':500,'gtol': 1e-13})
+#     res = minimize(eval_optim_crt, start_value, args=(aircraft,crit_index,crit_ref,), method="trust-constr",
+#                    jac="3-point", hess=SR1(), hessp=None, bounds=search_domain, tol=1e-5,
+#                    constraints=NonlinearConstraint(fun=lambda x:eval_optim_cst(x,aircraft,crit_index,crit_ref),
+#                                                    lb=0., ub=np.inf, jac='3-point'),
+#                    options={'maxiter':500,'gtol': 1e-13})
     #              tol=None, callback=None,
     #              options={'grad': None, 'xtol': 1e-08, 'gtol': 1e-08, 'barrier_tol': 1e-08,
     #                       'sparse_jacobian': None, 'maxiter': 1000, 'verbose': 0,
@@ -798,9 +799,9 @@ def mdf_process(aircraft,search_domain,criterion):
     #                       'initial_tr_radius': 1.0, 'initial_barrier_parameter': 0.1,
     #                       'initial_barrier_tolerance': 0.1, 'factorization_method': None, 'disp': False})
 
-    # res = minimize(eval_optim_crt, start_value, args=(aircraft,crit_index,crit_ref,), method="SLSQP", bounds=search_domain,
-    #                constraints={"type":"ineq","fun":eval_optim_cst,"args":(aircraft,crit_index,crit_ref,)},
-    #                jac="2-point",options={"maxiter":30,"ftol":0.0001,"eps":0.01},tol=1e-14)
+    res = minimize(eval_optim_crt, start_value, args=(aircraft,crit_index,crit_ref,), method="SLSQP", bounds=search_domain,
+                   constraints={"type":"ineq","fun":eval_optim_cst,"args":(aircraft,crit_index,crit_ref,)},
+                   jac="2-point",options={"maxiter":30,"ftol":0.0001,"eps":0.01},tol=1e-14)
 
     #res = minimize(eval_optim_crt, x_in, args=(aircraft,crit_index,crit_ref,), method="COBYLA", bounds=((110000,140000),(120,160)),
     #               constraints={"type":"ineq","fun":eval_optim_cst,"args":(aircraft,crit_index,crit_ref,)},
