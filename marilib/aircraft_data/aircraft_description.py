@@ -98,9 +98,10 @@ class Aircraft(object):
         
 
     def get_data_dict(self):
-
         return get_data_dict(self, "Aircraft", {})
-
+    
+    def get_ordered_data_dict(self):
+        return get_ordered_data_dict(self, "Aircraft", OrderedDict())
 
 #--------------------------------------------------------------------------------------------------------------------------------
 def write_data_dict_to_ini(data_dict, section, out_parser):
