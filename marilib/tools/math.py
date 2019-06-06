@@ -8,7 +8,7 @@ Created on Thu Jan 24 23:22:21 2019
 """
 
 from numpy import max, ceil, log10, floor, float64, arange,\
-                  array, size, vander, zeros
+                  array, size, vander, zeros, abs
 
 
 #===========================================================================================================
