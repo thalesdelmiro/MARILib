@@ -17,6 +17,8 @@ def isNaN(num):
 
 #===========================================================================================================
 def to_user_format(value):
+    if isNaN(value):
+        return value
     if isinstance(value, tuple):
         lst = list(value)
         for i in arange(len(lst)):
