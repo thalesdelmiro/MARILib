@@ -12,6 +12,10 @@ from numpy import max, ceil, log10, floor, float64, arange,\
 
 
 #===========================================================================================================
+def isNaN(num):
+    return num != num
+
+#===========================================================================================================
 def to_user_format(value):
     if isinstance(value, tuple):
         lst = list(value)
