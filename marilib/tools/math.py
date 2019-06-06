@@ -19,13 +19,13 @@ def isNaN(num):
 def to_user_format(value):
     if isNaN(value):
         return value
-    if isinstance(value, tuple):
+    elif isinstance(value, (tuple,list)):
         lst = list(value)
         for i in arange(len(lst)):
             lst[i] = to_user_format(lst[i])
-        value = tuple(lst)
+            value = lst
         return value
-    if isinstance(value, (float, float64)):
+    elif isinstance(value, (float, float64)):
         if value == 0. or value == -0.:
             return format(value, "".join((".4f")))
         else:
