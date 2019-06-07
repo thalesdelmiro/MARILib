@@ -55,15 +55,21 @@ def predesign_initialization(aircraft):
     fuselage_width = aircraft.fuselage.width
     nacelle_width = aircraft.turbofan_nacelle.width
     aircraft.turbofan_nacelle.y_ext = init.turbofan_nacelle_y_ext(nacelle_attachment,fuselage_width,nacelle_width)
-
+    lifting_plane_design(aircraft,initialization=True)
     return
 
 #-----------------------------------------------------------------------------------------------------------
-def lifting_plane_design(aircraft):
-    eval_vtp_design(aircraft)
-    eval_wing_design(aircraft)
-    eval_htp_design(aircraft)
+def lifting_plane_design(aircraft,initialization=False):
+    eval_vtp_design(aircraft,initialization=initialization)
+    eval_wing_design(aircraft,initialization=initialization)
+    eval_htp_design(aircraft,initialization=initialization)
     return
+
+# def lifting_plane_design(aircraft):
+#     eval_vtp_design(aircraft)
+#     eval_wing_design(aircraft)
+#     eval_htp_design(aircraft)
+#     return
 
 #-----------------------------------------------------------------------------------------------------------
 def propulsion(aircraft):
