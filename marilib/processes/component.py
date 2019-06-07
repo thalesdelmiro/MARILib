@@ -48,7 +48,7 @@ def eval_nominal_mission(aircraft):
 
     aircraft.weights.mass_constraint_3 = aircraft.weights.mtow - mtow
 
-#    aircraft.weights.mtow = mtow    # MTOW is overwritten here
+    aircraft.weights.mtow = mtow    # MTOW is overwritten here
 
     return
 

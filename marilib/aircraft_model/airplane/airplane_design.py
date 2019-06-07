@@ -103,9 +103,9 @@ def eval_aircraft_weights(aircraft):
 
     weights.mass_constraint_2 = weights.mlw - mlw
 
-#    weights.mzfw = mzfw     # MZFW is overwritten here
-
-#    weights.mlw = mlw       # MLW is overwritten here
+    weights.mzfw = mzfw     # MZFW is overwritten here
+ 
+    weights.mlw = mlw       # MLW is overwritten here
 
     return
 
