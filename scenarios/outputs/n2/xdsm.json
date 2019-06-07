@@ -1,0 +1,375 @@
+{
+  "root": {
+    "nodes": [
+      {
+        "type": "optimization", 
+        "id": "Opt", 
+        "name": "Optimizer"
+      }, 
+      {
+        "type": "mda", 
+        "id": "Dis1", 
+        "name": "MDAChain"
+      }, 
+      {
+        "type": "mda", 
+        "id": "Dis2", 
+        "name": "MDAJacobi"
+      }, 
+      {
+        "type": "analysis", 
+        "id": "Dis3", 
+        "name": "lifting_plane_design"
+      }, 
+      {
+        "type": "analysis", 
+        "id": "Dis4", 
+        "name": "propulsion"
+      }, 
+      {
+        "type": "analysis", 
+        "id": "Dis5", 
+        "name": "aircraft_aerodynamics"
+      }, 
+      {
+        "type": "analysis", 
+        "id": "Dis6", 
+        "name": "aircraft_mass"
+      }, 
+      {
+        "type": "analysis", 
+        "id": "Dis7", 
+        "name": "nominal_mission"
+      }, 
+      {
+        "type": "analysis", 
+        "id": "Dis8", 
+        "name": "handling_quality_analysis"
+      }, 
+      {
+        "type": "analysis", 
+        "id": "Dis9", 
+        "name": "performance_analysis"
+      }, 
+      {
+        "type": "analysis", 
+        "id": "Dis10", 
+        "name": "criteria"
+      }
+    ], 
+    "edges": [
+      {
+        "to": "Opt", 
+        "from": "_U_", 
+        "name": "turbofan_engine/reference_thrust^(0), wing/area^(0), wing/x_root^(0), horizontal_tail/area^(0), vertical_tail/area^(0)"
+      }, 
+      {
+        "to": "_U_", 
+        "from": "Opt", 
+        "name": "economics/direct_operating_cost-15000.0*0.01^*, -weights/mass_constraint_1^*, -weights/mass_constraint_2^*, -weights/mass_constraint_3^*, -center_of_gravity/cg_constraint_1^*, -center_of_gravity/cg_constraint_2^*, -center_of_gravity/cg_constraint_3^*, -high_speed/perfo_constraint_1^*, -high_speed/perfo_constraint_2^*, -high_speed/perfo_constraint_3^*, -low_speed/perfo_constraint_1^*, -low_speed/perfo_constraint_2^*, -low_speed/perfo_constraint_3^*"
+      }, 
+      {
+        "to": "Dis1", 
+        "from": "Opt", 
+        "name": "wing/x_root, vertical_tail/area, wing/area, horizontal_tail/area, turbofan_engine/reference_thrust"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis1", 
+        "name": "economics/direct_operating_cost, weights/mass_constraint_2, weights/mass_constraint_3, weights/mass_constraint_1, low_speed/perfo_constraint_2, low_speed/perfo_constraint_3, low_speed/perfo_constraint_1, center_of_gravity/cg_constraint_3, center_of_gravity/cg_constraint_2, center_of_gravity/cg_constraint_1, high_speed/perfo_constraint_1, high_speed/perfo_constraint_3, high_speed/perfo_constraint_2"
+      }, 
+      {
+        "to": "Dis2", 
+        "from": "Opt", 
+        "name": "wing/x_root, vertical_tail/area, wing/area, horizontal_tail/area, turbofan_engine/reference_thrust"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis2", 
+        "name": "weights/mass_constraint_1, weights/mass_constraint_2, weights/mass_constraint_3"
+      }, 
+      {
+        "to": "Dis3", 
+        "from": "Opt", 
+        "name": "wing/x_root, vertical_tail/area, wing/area, horizontal_tail/area"
+      }, 
+      {
+        "to": "Dis4", 
+        "from": "Opt", 
+        "name": "wing/x_root, turbofan_engine/reference_thrust"
+      }, 
+      {
+        "to": "Dis5", 
+        "from": "Opt", 
+        "name": "wing/area"
+      }, 
+      {
+        "to": "Dis6", 
+        "from": "Opt", 
+        "name": "wing/x_root, vertical_tail/area, wing/area, horizontal_tail/area, turbofan_engine/reference_thrust"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis6", 
+        "name": "weights/mass_constraint_1, weights/mass_constraint_2"
+      }, 
+      {
+        "to": "Dis7", 
+        "from": "Opt", 
+        "name": "wing/area, turbofan_engine/reference_thrust"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis7", 
+        "name": "weights/mass_constraint_3"
+      }, 
+      {
+        "to": "Dis8", 
+        "from": "Opt", 
+        "name": "vertical_tail/area, wing/area, horizontal_tail/area, turbofan_engine/reference_thrust"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis8", 
+        "name": "center_of_gravity/cg_constraint_3, center_of_gravity/cg_constraint_2, center_of_gravity/cg_constraint_1"
+      }, 
+      {
+        "to": "Dis9", 
+        "from": "Opt", 
+        "name": "wing/area, turbofan_engine/reference_thrust"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis9", 
+        "name": "low_speed/perfo_constraint_2, low_speed/perfo_constraint_3, low_speed/perfo_constraint_1, high_speed/perfo_constraint_1, high_speed/perfo_constraint_3, high_speed/perfo_constraint_2"
+      }, 
+      {
+        "to": "Dis10", 
+        "from": "Opt", 
+        "name": "wing/area, turbofan_engine/reference_thrust"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis10", 
+        "name": "economics/direct_operating_cost"
+      }, 
+      {
+        "to": "_U_", 
+        "from": "Dis3", 
+        "name": "wing/net_wetted_area^*, horizontal_tail/t_o_c^*, horizontal_tail/x_mac^*, horizontal_tail/sweep^*, horizontal_tail/volume^*, vertical_tail/sweep^*, wing/x_mac^*, wing/c_root^*, vertical_tail/t_o_c^*, wing/z_root^*, vertical_tail/height^*, wing/setting^*, wing/z_tip^*, wing/y_mac^*, vertical_tail/mac^*, horizontal_tail/lever_arm^*, wing/t_o_c_t^*, wing/x_tip^*, wing/y_kink^*, wing/sweep^*, vertical_tail/net_wetted_area^*, horizontal_tail/dihedral^*, horizontal_tail/c_axe^*, wing/dihedral^*, horizontal_tail/z_axe^*, horizontal_tail/x_tip^*, wing/y_root^*, wing/span^*, horizontal_tail/z_tip^*, horizontal_tail/x_axe^*, wing/t_o_c_r^*, vertical_tail/c_tip^*, horizontal_tail/taper_ratio^*, vertical_tail/lever_arm^*, wing/mac^*, wing/c_tip^*, horizontal_tail/c_tip^*, vertical_tail/taper_ratio^*, wing/t_o_c_k^*, vertical_tail/z_root^*, wing/c_kink^*, vertical_tail/x_root^*, wing/taper_ratio^*, wing/y_tip^*, horizontal_tail/net_wetted_area^*, vertical_tail/volume^*, horizontal_tail/mac^*, vertical_tail/z_tip^*, horizontal_tail/y_tip^*, wing/z_kink^*, horizontal_tail/aspect_ratio^*, vertical_tail/x_mac^*, vertical_tail/aspect_ratio^*, vertical_tail/x_tip^*, horizontal_tail/y_mac^*, wing/x_kink^*, horizontal_tail/span^*, vertical_tail/c_root^*"
+      }, 
+      {
+        "to": "_U_", 
+        "from": "Dis4", 
+        "name": "propulsion/rating_code^*, turbofan_engine/rating_factor^*, propulsion/mcr_thrust_ref^*, propulsion/fid_thrust_ref^*, propulsion/mcl_thrust_ref^*, propulsion/sfc_cruise_ref^*, propulsion/sec_cruise_ref^*, turbofan_nacelle/z_ext^*, turbofan_nacelle/y_ext^*, turbofan_nacelle/x_ext^*, turbofan_nacelle/net_wetted_area^*, turbofan_nacelle/width^*, propulsion/mto_thrust_ref^*, turbofan_nacelle/length^*, propulsion/mcn_thrust_ref^*, propulsion/reference_thrust_effective^*"
+      }, 
+      {
+        "to": "_U_", 
+        "from": "Dis5", 
+        "name": "aerodynamics/hld_conf_clean^*, aerodynamics/hld_conf_to^*, aerodynamics/cz_max_ld^*, aerodynamics/hld_conf_ld^*, aerodynamics/cz_max_to^*, aerodynamics/cz_max_clean^*, aerodynamics/cz_cruise_lod_max^*, aerodynamics/cruise_lod_max^*"
+      }, 
+      {
+        "to": "_U_", 
+        "from": "Dis6", 
+        "name": "cabin/cg_furnishing^*, payload/max_bwd_req_cg^*, battery/mass^*, propulsion/mass^*, center_of_gravity/max_fwd_req_cg^*, center_of_gravity/max_bwd_mass^*, propulsion/c_g^*, vertical_tail/c_g^*, center_of_gravity/owe^*, landing_gears/mass^*, turbofan_pylon/mass^*, wing/c_g^*, weights/owe^*, tanks/fuel_max_bwd_cg^*, turbofan_pylon/c_g^*, tanks/fuel_max_fwd_cg^*, turbofan_nacelle/c_g^*, turbofan_nacelle/mass^*, tanks/fuel_cantilever_cg^*, vertical_tail/mass^*, payload/max_fwd_req_cg^*, tanks/fuel_max_bwd_mass^*, tanks/cantilever_volume^*, battery/c_g^*, landing_gears/c_g^*, tanks/central_volume^*, systems/mass^*, cabin/m_furnishing^*, horizontal_tail/mass^*, payload/nominal^*, tanks/fuel_density^*, weights/mzfw^*, tanks/mfw_volume_limited^*, cabin/m_op_item^*, weights/mfw^*, payload/maximum^*, center_of_gravity/max_bwd_req_cg^*, weights/mwe^*, payload/max_bwd_mass^*, center_of_gravity/mwe^*, payload/m_container_pallet^*, fuselage/mass^*, cabin/cg_op_item^*, horizontal_tail/c_g^*, payload/max_fwd_mass^*, wing/mass^*, center_of_gravity/max_fwd_mass^*, tanks/fuel_central_cg^*, tanks/fuel_max_fwd_mass^*, systems/c_g^*, payload/cg_container_pallet^*, fuselage/c_g^*, weights/mlw^*"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis6", 
+        "name": "weights/mass_constraint_1, weights/mass_constraint_2"
+      }, 
+      {
+        "to": "_U_", 
+        "from": "Dis7", 
+        "name": "nominal_mission/block_fuel^*, nominal_mission/range^*, nominal_mission/block_time^*, nominal_mission/payload^*, nominal_mission/total_fuel^*, weights/mtow^*, nominal_mission/tow^*"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis7", 
+        "name": "weights/mass_constraint_3"
+      }, 
+      {
+        "to": "_U_", 
+        "from": "Dis8", 
+        "name": "center_of_gravity/max_bwd_oei_cg^*, center_of_gravity/max_fwd_trim_cg^*, center_of_gravity/max_bwd_stab_cg^*, center_of_gravity/max_bwd_oei_mass^*, center_of_gravity/max_bwd_oei_req_cg^*"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis8", 
+        "name": "center_of_gravity/cg_constraint_3, center_of_gravity/cg_constraint_2, center_of_gravity/cg_constraint_1"
+      }, 
+      {
+        "to": "_U_", 
+        "from": "Dis9", 
+        "name": "high_speed/eff_ttc^*, max_fuel_mission/range^*, max_fuel_mission/block_fuel^*, max_payload_mission/tow^*, high_speed/eff_vz_cruise^*, low_speed/eff_kvs1g^*, max_fuel_mission/tow^*, zero_payload_mission/total_fuel^*, max_payload_mission/total_fuel^*, low_speed/limitation^*, max_payload_mission/payload^*, zero_payload_mission/tow^*, low_speed/eff_tofl^*, max_fuel_mission/block_time^*, low_speed/eff_app_speed^*, low_speed/eff_oei_path^*, max_fuel_mission/payload^*, max_payload_mission/block_fuel^*, max_payload_mission/range^*, max_payload_mission/block_time^*, low_speed/seg2_path^*, high_speed/eff_vz_climb^*, zero_payload_mission/block_time^*, zero_payload_mission/range^*, max_fuel_mission/total_fuel^*, zero_payload_mission/block_fuel^*"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis9", 
+        "name": "high_speed/perfo_constraint_1, high_speed/perfo_constraint_3, high_speed/perfo_constraint_2, low_speed/perfo_constraint_2, low_speed/perfo_constraint_3, low_speed/perfo_constraint_1"
+      }, 
+      {
+        "to": "_U_", 
+        "from": "Dis10", 
+        "name": "cost_mission/block_fuel^*, economics/pax_handling_cost^*, economics/ramp_handling_cost^*, cost_mission/block_time^*, economics/depreciation^*, environmental_impact/CO2_metric^*, cost_mission/payload^*, economics/airplane_price^*, economics/battery_price^*, economics/navigation_fees^*, economics/cabin_crew_cost^*, economics/cockpit_crew_cost^*, cost_mission/total_fuel^*, economics/cash_operating_cost^*, economics/total_investment^*, cost_mission/block_CO2^*, economics/engine_price^*, economics/interest^*, economics/landing_fees^*, economics/insurance^*, economics/gear_price^*, economics/catering_cost^*, environmental_impact/rgf^*, economics/fuel_cost^*"
+      }, 
+      {
+        "to": "Opt", 
+        "from": "Dis10", 
+        "name": "economics/direct_operating_cost"
+      }, 
+      {
+        "to": "Dis9", 
+        "from": "Dis2", 
+        "name": "aerodynamics/hld_conf_to, horizontal_tail/mac, horizontal_tail/net_wetted_area, payload/maximum, propulsion/rating_code, turbofan_engine/rating_factor, turbofan_nacelle/length, turbofan_nacelle/net_wetted_area, turbofan_nacelle/width, vertical_tail/mac, vertical_tail/net_wetted_area, weights/mfw, weights/mlw, weights/mtow, weights/owe, wing/mac, wing/net_wetted_area, wing/span"
+      }, 
+      {
+        "to": "Dis10", 
+        "from": "Dis2", 
+        "name": "battery/mass, horizontal_tail/mac, horizontal_tail/net_wetted_area, landing_gears/mass, payload/nominal, propulsion/mass, propulsion/rating_code, propulsion/reference_thrust_effective, turbofan_engine/rating_factor, turbofan_nacelle/length, turbofan_nacelle/net_wetted_area, vertical_tail/mac, vertical_tail/net_wetted_area, weights/mtow, weights/mwe, weights/owe, wing/mac, wing/net_wetted_area, wing/span"
+      }, 
+      {
+        "to": "Dis8", 
+        "from": "Dis2", 
+        "name": "aerodynamics/cz_max_to, aerodynamics/hld_conf_clean, aerodynamics/hld_conf_ld, center_of_gravity/max_bwd_req_cg, center_of_gravity/max_fwd_mass, center_of_gravity/max_fwd_req_cg, horizontal_tail/aspect_ratio, horizontal_tail/mac, horizontal_tail/net_wetted_area, horizontal_tail/x_mac, payload/nominal, propulsion/rating_code, turbofan_engine/rating_factor, turbofan_nacelle/length, turbofan_nacelle/net_wetted_area, turbofan_nacelle/width, turbofan_nacelle/y_ext, turbofan_nacelle/z_ext, vertical_tail/aspect_ratio, vertical_tail/mac, vertical_tail/net_wetted_area, vertical_tail/x_mac, weights/owe, wing/mac, wing/net_wetted_area, wing/setting, wing/span, wing/sweep, wing/x_mac"
+      }, 
+      {
+        "to": "Dis3", 
+        "from": "Dis2", 
+        "name": "horizontal_tail/aspect_ratio, horizontal_tail/c_axe, horizontal_tail/c_tip, horizontal_tail/dihedral, horizontal_tail/lever_arm, horizontal_tail/mac, horizontal_tail/span, horizontal_tail/sweep, horizontal_tail/taper_ratio, horizontal_tail/x_axe, horizontal_tail/x_mac, horizontal_tail/y_tip, horizontal_tail/z_axe, turbofan_nacelle/width, vertical_tail/aspect_ratio, vertical_tail/c_root, vertical_tail/c_tip, vertical_tail/height, vertical_tail/lever_arm, vertical_tail/mac, vertical_tail/sweep, vertical_tail/taper_ratio, vertical_tail/x_mac, vertical_tail/x_root, vertical_tail/x_tip, vertical_tail/z_root, weights/mtow, wing/c_kink, wing/c_root, wing/c_tip, wing/dihedral, wing/span, wing/sweep, wing/t_o_c_k, wing/t_o_c_t, wing/taper_ratio, wing/x_kink, wing/x_tip, wing/y_kink, wing/y_root, wing/y_tip, wing/z_root"
+      }, 
+      {
+        "to": "Dis4", 
+        "from": "Dis2", 
+        "name": "propulsion/rating_code, turbofan_engine/rating_factor, turbofan_nacelle/length, turbofan_nacelle/width, turbofan_nacelle/y_ext, wing/c_kink, wing/c_tip, wing/dihedral, wing/sweep, wing/y_kink, wing/y_root, wing/y_tip"
+      }, 
+      {
+        "to": "Dis5", 
+        "from": "Dis2", 
+        "name": "aerodynamics/hld_conf_clean, aerodynamics/hld_conf_ld, aerodynamics/hld_conf_to, horizontal_tail/mac, horizontal_tail/net_wetted_area, turbofan_nacelle/length, turbofan_nacelle/net_wetted_area, vertical_tail/mac, vertical_tail/net_wetted_area, wing/mac, wing/net_wetted_area, wing/span"
+      }, 
+      {
+        "to": "Dis6", 
+        "from": "Dis2", 
+        "name": "aerodynamics/hld_conf_ld, battery/c_g, battery/mass, cabin/cg_furnishing, cabin/cg_op_item, cabin/m_furnishing, cabin/m_op_item, center_of_gravity/max_bwd_mass, center_of_gravity/max_fwd_mass, center_of_gravity/mwe, center_of_gravity/owe, fuselage/c_g, fuselage/mass, horizontal_tail/c_g, horizontal_tail/mac, horizontal_tail/mass, horizontal_tail/x_mac, landing_gears/c_g, landing_gears/mass, payload/cg_container_pallet, payload/m_container_pallet, payload/max_bwd_mass, payload/max_bwd_req_cg, payload/max_fwd_mass, payload/max_fwd_req_cg, payload/maximum, propulsion/c_g, propulsion/mass, systems/c_g, systems/mass, tanks/cantilever_volume, tanks/central_volume, tanks/fuel_cantilever_cg, tanks/fuel_central_cg, tanks/fuel_density, tanks/fuel_max_bwd_cg, tanks/fuel_max_bwd_mass, tanks/fuel_max_fwd_cg, tanks/fuel_max_fwd_mass, tanks/mfw_volume_limited, turbofan_nacelle/c_g, turbofan_nacelle/length, turbofan_nacelle/mass, turbofan_nacelle/x_ext, turbofan_pylon/c_g, turbofan_pylon/mass, vertical_tail/c_g, vertical_tail/mac, vertical_tail/mass, vertical_tail/x_mac, weights/mlw, weights/mtow, weights/mwe, weights/mzfw, weights/owe, wing/c_g, wing/c_kink, wing/c_root, wing/c_tip, wing/mac, wing/mass, wing/span, wing/sweep, wing/t_o_c_k, wing/t_o_c_r, wing/t_o_c_t, wing/x_kink, wing/x_tip"
+      }, 
+      {
+        "to": "Dis7", 
+        "from": "Dis2", 
+        "name": "horizontal_tail/mac, horizontal_tail/net_wetted_area, nominal_mission/payload, nominal_mission/range, nominal_mission/tow, payload/nominal, propulsion/rating_code, turbofan_nacelle/length, turbofan_nacelle/net_wetted_area, vertical_tail/mac, vertical_tail/net_wetted_area, weights/mtow, weights/owe, wing/mac, wing/net_wetted_area, wing/span"
+      }, 
+      {
+        "to": "Dis2", 
+        "from": "Dis3", 
+        "name": "horizontal_tail/aspect_ratio, horizontal_tail/c_axe, horizontal_tail/c_tip, horizontal_tail/dihedral, horizontal_tail/lever_arm, horizontal_tail/mac, horizontal_tail/net_wetted_area, horizontal_tail/span, horizontal_tail/sweep, horizontal_tail/taper_ratio, horizontal_tail/x_axe, horizontal_tail/x_mac, horizontal_tail/y_tip, horizontal_tail/z_axe, vertical_tail/aspect_ratio, vertical_tail/c_root, vertical_tail/c_tip, vertical_tail/height, vertical_tail/lever_arm, vertical_tail/mac, vertical_tail/net_wetted_area, vertical_tail/sweep, vertical_tail/taper_ratio, vertical_tail/x_mac, vertical_tail/x_root, vertical_tail/x_tip, vertical_tail/z_root, wing/c_kink, wing/c_root, wing/c_tip, wing/dihedral, wing/mac, wing/net_wetted_area, wing/span, wing/sweep, wing/t_o_c_k, wing/t_o_c_r, wing/t_o_c_t, wing/taper_ratio, wing/x_kink, wing/x_tip, wing/y_kink, wing/y_root, wing/y_tip, wing/z_root"
+      }, 
+      {
+        "to": "Dis4", 
+        "from": "Dis3", 
+        "name": "wing/c_kink, wing/c_tip, wing/dihedral, wing/sweep, wing/y_kink, wing/y_root, wing/y_tip"
+      }, 
+      {
+        "to": "Dis5", 
+        "from": "Dis3", 
+        "name": "horizontal_tail/mac, horizontal_tail/net_wetted_area, vertical_tail/mac, vertical_tail/net_wetted_area, wing/mac, wing/net_wetted_area, wing/span"
+      }, 
+      {
+        "to": "Dis6", 
+        "from": "Dis3", 
+        "name": "horizontal_tail/mac, horizontal_tail/x_mac, vertical_tail/mac, vertical_tail/x_mac, wing/c_kink, wing/c_root, wing/c_tip, wing/mac, wing/span, wing/sweep, wing/t_o_c_k, wing/t_o_c_r, wing/t_o_c_t, wing/x_kink, wing/x_tip"
+      }, 
+      {
+        "to": "Dis7", 
+        "from": "Dis3", 
+        "name": "horizontal_tail/mac, horizontal_tail/net_wetted_area, vertical_tail/mac, vertical_tail/net_wetted_area, wing/mac, wing/net_wetted_area, wing/span"
+      }, 
+      {
+        "to": "Dis2", 
+        "from": "Dis4", 
+        "name": "propulsion/rating_code, turbofan_engine/rating_factor, turbofan_nacelle/length, turbofan_nacelle/net_wetted_area, turbofan_nacelle/width, turbofan_nacelle/x_ext, turbofan_nacelle/y_ext"
+      }, 
+      {
+        "to": "Dis3", 
+        "from": "Dis4", 
+        "name": "turbofan_nacelle/width"
+      }, 
+      {
+        "to": "Dis5", 
+        "from": "Dis4", 
+        "name": "turbofan_nacelle/length, turbofan_nacelle/net_wetted_area"
+      }, 
+      {
+        "to": "Dis6", 
+        "from": "Dis4", 
+        "name": "turbofan_nacelle/length, turbofan_nacelle/x_ext"
+      }, 
+      {
+        "to": "Dis7", 
+        "from": "Dis4", 
+        "name": "propulsion/rating_code, turbofan_nacelle/length, turbofan_nacelle/net_wetted_area"
+      }, 
+      {
+        "to": "Dis2", 
+        "from": "Dis5", 
+        "name": "aerodynamics/hld_conf_clean, aerodynamics/hld_conf_ld, aerodynamics/hld_conf_to"
+      }, 
+      {
+        "to": "Dis6", 
+        "from": "Dis5", 
+        "name": "aerodynamics/hld_conf_ld"
+      }, 
+      {
+        "to": "Dis2", 
+        "from": "Dis6", 
+        "name": "battery/c_g, battery/mass, cabin/cg_furnishing, cabin/cg_op_item, cabin/m_furnishing, cabin/m_op_item, center_of_gravity/max_bwd_mass, center_of_gravity/max_fwd_mass, center_of_gravity/mwe, center_of_gravity/owe, fuselage/c_g, fuselage/mass, horizontal_tail/c_g, horizontal_tail/mass, landing_gears/c_g, landing_gears/mass, payload/cg_container_pallet, payload/m_container_pallet, payload/max_bwd_mass, payload/max_bwd_req_cg, payload/max_fwd_mass, payload/max_fwd_req_cg, payload/maximum, payload/nominal, propulsion/c_g, propulsion/mass, systems/c_g, systems/mass, tanks/cantilever_volume, tanks/central_volume, tanks/fuel_cantilever_cg, tanks/fuel_central_cg, tanks/fuel_density, tanks/fuel_max_bwd_cg, tanks/fuel_max_bwd_mass, tanks/fuel_max_fwd_cg, tanks/fuel_max_fwd_mass, tanks/mfw_volume_limited, turbofan_nacelle/c_g, turbofan_nacelle/mass, turbofan_pylon/c_g, turbofan_pylon/mass, vertical_tail/c_g, vertical_tail/mass, weights/mlw, weights/mwe, weights/mzfw, weights/owe, wing/c_g, wing/mass"
+      }, 
+      {
+        "to": "Dis7", 
+        "from": "Dis6", 
+        "name": "payload/nominal, weights/owe"
+      }, 
+      {
+        "to": "Dis2", 
+        "from": "Dis7", 
+        "name": "nominal_mission/payload, nominal_mission/range, nominal_mission/tow, weights/mtow"
+      }, 
+      {
+        "to": "Dis3", 
+        "from": "Dis7", 
+        "name": "weights/mtow"
+      }, 
+      {
+        "to": "Dis6", 
+        "from": "Dis7", 
+        "name": "weights/mtow"
+      }
+    ], 
+    "optpb": "Optimization problem:\n      Minimize: economics/direct_operating_cost-15000.0*0.01(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area)\nWith respect to: \n    turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area\nSubject to constraints: \n-weights/mass_constraint_1(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\n-weights/mass_constraint_2(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\n-weights/mass_constraint_3(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\n-center_of_gravity/cg_constraint_1(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\n-center_of_gravity/cg_constraint_2(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\n-center_of_gravity/cg_constraint_3(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\n-high_speed/perfo_constraint_1(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\n-high_speed/perfo_constraint_2(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\n-high_speed/perfo_constraint_3(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\n-low_speed/perfo_constraint_1(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\n-low_speed/perfo_constraint_2(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\n-low_speed/perfo_constraint_3(turbofan_engine/reference_thrust, wing/area, wing/x_root, horizontal_tail/area, vertical_tail/area) <= 0\nDesign Space: \n+----------------------------------+-------------+-------------------+-------------+-------+\n| name                             | lower_bound |       value       | upper_bound | type  |\n+----------------------------------+-------------+-------------------+-------------+-------+\n| turbofan_engine/reference_thrust |    50000    | 129034.2321139089 |    150000   | float |\n| wing/area                        |      50     | 144.7495734813957 |     200     | float |\n| wing/x_root                      |      10     | 13.27378182683346 |      15     | float |\n| horizontal_tail/area             |      30     |  33.6801195587947 |      50     | float |\n| vertical_tail/area               |      15     | 21.62920427527074 |      30     | float |\n+----------------------------------+-------------+-------------------+-------------+-------+", 
+    "workflow": [
+      "_U_", 
+      [
+        "Opt", 
+        [
+          "Dis1", 
+          [
+            "Dis2", 
+            [
+              {
+                "parallel": [
+                  "Dis3", 
+                  "Dis4", 
+                  "Dis5", 
+                  "Dis6", 
+                  "Dis7"
+                ]
+              }
+            ], 
+            "Dis8", 
+            "Dis9", 
+            "Dis10"
+          ]
+        ]
+      ]
+    ]
+  }
+}
